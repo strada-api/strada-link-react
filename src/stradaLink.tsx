@@ -4,7 +4,7 @@ import { StradaLinkProps, StradaLinkResponse } from "./types";
 
 export const useStradaLink = (config: StradaLinkProps): StradaLinkResponse => {
   const [loading, error] = useScript({
-    src: "/Users/arashkhazaei/Dev/Strada/strada-app/link/link-asset/initialize.js",
+    src: "https://getstrada.com/link-asset/initialize.js",
     checkForExisting: true,
   });
   const [isReady, setIsReady] = useState(false);
