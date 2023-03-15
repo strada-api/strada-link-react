@@ -14,22 +14,33 @@ export const useStradaLink = (config: StradaLinkProps): StradaLinkResponse => {
     !!window.StradaLink &&
     !loading &&
     !error &&
-    config.linkToken !== undefined;
+    config.linkAccessToken !== undefined;
+
+  console.log("isReadyForInitialization", isReadyForInitialization);
+  console.log(config);
+  console.log("Loading had error", error);
 
   useEffect(() => {
     if (isReadyForInitialization && window.StradaLink) {
       window.StradaLink.initialize({
-        linkToken: config.linkToken,
+        env: config.env,
+        linkAccessToken: config.linkAccessToken,
+        onSuccess: config.onSuccess,
         onReady: () => setIsReady(true),
       });
+      console.log("StradaLink ready");
+    } else {
+      console.log("StradaLink not ready");
     }
   }, [isReadyForInitialization, config]);
 
   const open = useCallback(() => {
     if (window.StradaLink) {
+      console.log("Opening StradaLink");
       window.StradaLink.openLink(config);
     }
   }, [config]);
 
+  console.log("Returning from useStradaLink", { open, isReady, error });
   return { open, isReady, error };
 };

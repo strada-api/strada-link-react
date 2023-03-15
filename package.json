@@ -1,6 +1,6 @@
 {
   "name": "@stradahq/strada-link-react",
-  "version": "0.1.4",
+  "version": "0.1.7",
   "description": "Bindings for Strada Link in React",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",

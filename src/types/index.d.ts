@@ -1,26 +1,20 @@
-export type ValidationErrors = ValidationError[];
-
-export type ValidationError = {
-  detail: string;
-  problem_type?: string;
-  [key: string]: any;
-};
+export enum StradaEnviorment {
+  Sandbox = "sandbox",
+  Prod = "prod",
+  Local = "local",
+}
 
 export interface StradaLink {
-  initialize: (config: InitializeProps) => void;
+  initialize: (config: StradaLinkProps) => void;
   openLink: (config: StradaLinkProps) => void;
 }
 
 export interface StradaLinkProps {
-  linkToken: string;
-  onSuccess: (publicToken: string) => void;
-  onValidationError?: (errors: ValidationErrors) => void;
+  env: StradaEnviorment;
+  linkAccessToken: string;
+  onReady: () => void;
+  onSuccess: (publicConnectionToken: string) => void;
   onExit?: () => void;
-}
-
-export interface InitializeProps {
-  linkToken: string;
-  onReady?: () => void;
 }
 
 export type StradaLinkResponse = {
