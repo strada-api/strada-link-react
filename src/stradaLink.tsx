@@ -4,7 +4,7 @@ import { StradaLinkProps, StradaLinkResponse } from "./types";
 
 export const useStradaLink = (config: StradaLinkProps): StradaLinkResponse => {
   const [loading, error] = useScript({
-    src: "https://getstrada.com/link-asset/initialize.js",
+    src: "https://cdn.getstrada.com/link-asset/initialize.js",
     checkForExisting: true,
   });
   const [isReady, setIsReady] = useState(false);
@@ -19,6 +19,7 @@ export const useStradaLink = (config: StradaLinkProps): StradaLinkResponse => {
   console.log("isReadyForInitialization", isReadyForInitialization);
   console.log(config);
   console.log("Loading had error", error);
+
 
   useEffect(() => {
     if (isReadyForInitialization && window.StradaLink) {
