@@ -20,7 +20,6 @@ export const useStradaLink = (config: StradaLinkProps): StradaLinkResponse => {
   console.log(config);
   console.log("Loading had error", error);
 
-
   useEffect(() => {
     if (isReadyForInitialization && window.StradaLink) {
       window.StradaLink.initialize({
