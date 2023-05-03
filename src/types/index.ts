@@ -1,4 +1,4 @@
-export enum StradaEnviorment {
+export enum StradaEnvironment {
   Sandbox = "sandbox",
   Prod = "prod",
   Local = "local",
@@ -10,9 +10,9 @@ export interface StradaLink {
 }
 
 export interface StradaLinkProps {
-  env: StradaEnviorment;
+  env: string;
   linkAccessToken: string;
-  onReady: () => void;
+  onReady?: () => void;
   onSuccess: (publicConnectionToken: string) => void;
   onExit?: () => void;
 }

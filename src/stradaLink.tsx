@@ -1,11 +1,15 @@
 import { useCallback, useEffect, useState } from "react";
 import useScript from "react-script-hook";
-import { StradaEnviorment, StradaLinkProps, StradaLinkResponse } from "./types";
+import {
+  StradaEnvironment,
+  StradaLinkProps,
+  StradaLinkResponse,
+} from "./types";
 
 export const useStradaLink = (config: StradaLinkProps): StradaLinkResponse => {
   const [loading, error] = useScript({
     src:
-      config.env === StradaEnviorment.Local
+      config.env === StradaEnvironment.Local
         ? "http://localhost:3333/link-asset/initialize.js"
         : "https://cdn.getstrada.com/link-asset/initialize.js",
     checkForExisting: true,
